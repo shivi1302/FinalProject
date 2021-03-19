@@ -5,5 +5,6 @@ export default{
     HEALTHCARE:"healthcare",
     NOTIFICATIONS:"notifications",
     LOGIN:"login",
-    SIGNUP:"signup"
+    SIGNUP:"signup",
+    DETAILPAGE:"detailpage"
 }

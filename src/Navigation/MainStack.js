@@ -1,12 +1,15 @@
 import React,{ Fragment } from "react";
 import { createStackNavigator } from "react-navigation-stack";
 import navigationStrings from "../constants/navigationStrings";
+import { DetailPage, HomePage } from "../Screens";
 import Account from "../Screens/Account/Account";
+// import DetailPage from "../Screens/DetailPage/DetailPage";
 import Diagnostics from "../Screens/Diagnostics/Diagnostics";
 import HealthCare from "../Screens/Healthcare/HealthCare";
-import HomePage from "../Screens/HomePage/HomePage";
+// import HomePage from "../Screens/HomePage/HomePage";
 import Notification from "../Screens/Notifications/Notifications";
 import BottomTabNavigator from "./TabRoutes";
+
 function MainStack(Stack){
     return(
         <Fragment>
@@ -17,7 +20,14 @@ function MainStack(Stack){
             }}
             name={navigationStrings.HOMEPAGE}
             />
-            <Stack.Screen
+                <Stack.Screen
+            component={DetailPage}
+            options={{
+                headerShown: false
+            }}
+            name={navigationStrings.DETAILPAGE}
+            />
+            {/* <Stack.Screen
             component={Account}
             options={{
                 headerShown: false
@@ -44,7 +54,7 @@ function MainStack(Stack){
                 headerShown: false
             }}
             name={navigationStrings.DIAGNOSTICS}
-            />
+            /> */}
         </Fragment>
     )
 }

@@ -43,7 +43,7 @@ class Login extends Component {
        <TextInput
           placeholder="Email"
           style={styles.placeHolders}
-          onChangeText={this.onChangeText("password")}
+          onChangeText={this.onChangeText("email")}
           ></TextInput>
            <TextInput
           placeholder="Password"
@@ -54,7 +54,7 @@ class Login extends Component {
               >
               <Text style={styles.buttonText}>Start</Text>
           </TouchableOpacity> */}
-<TouchableOpacity style={styles.button}  onPress={() =>{this.isValidData ()? (this.props.navigation.navigate(navigationStrings.HOME)):null   }     
+<TouchableOpacity style={styles.button}  onPress={() =>{this.isValidData ()? (this.props.navigation.navigate(navigationStrings.HOMEPAGE)):null   }
               }>
     <Text style={styles.buttonText}>Start</Text>
 </TouchableOpacity>
