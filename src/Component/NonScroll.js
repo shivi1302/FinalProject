@@ -13,13 +13,14 @@ import navigationStrings from '../constants/navigationStrings';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 export default function NonScroll(props){
-  const {name}= props
+  const {name,counter}= props
   const navigation = useNavigation();
     return(
         <View style={{backgroundColor:colors.themeColor}}>
             <View style={{flexDirection: 'row'}}>
             <Text style={styles.textStyle}>{name}</Text>
             <Image source={imagePath.specialOffer} style={styles.imageStyle1} />
+            <Text>{counter}</Text>
             <TouchableOpacity onPress={() =>
             navigation.navigate(navigationStrings.CART)
           }>
@@ -63,4 +64,5 @@ const styles= StyleSheet.create({
         marginTop: 20,
         paddingLeft: 15,
       },
+      
 })

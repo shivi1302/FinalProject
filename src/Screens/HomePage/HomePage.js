@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, ScrollView, StyleSheet, Image,FlatList} from 'react-native';
+import { showMessage } from 'react-native-flash-message';
 import Card from '../../Component/Card';
 import Crousal from '../../Component/Crousal';
 import HomeView from '../../Component/HomeView';
@@ -76,17 +77,36 @@ export default class HomePage extends Component {
         price: 3299,
         mrp : 154
       },
-    ]
+    ],
+    noInCart:0,
+    cartForm:[]
   }
 
-  addToCart=()=>{
-   
+  addToCart = (item) => {
+    let {cartForm ,noInCart} = this.state;
+    let newCart =[...cartForm,...[item]]
+  let index = cartForm.findIndex((data)=> data.id == item.id  )
+  if(!(index==-1)){
+    showMessage({
+      type: 'danger',
+      icon: 'danger',
+      message: "Already Added to Cart",
+    });
+    this.setState({
+    })
   }
+  else{
+    this.setState({
+      cartForm:newCart,
+      noInCart:noInCart+1
+    });
+  }
+  };
   render() {
-    const {HomeArray}= this.state
+    const {HomeArray,noInCart}= this.state
     return (
       <WrapperClass>
-        <NonScroll name="PharmEasy" />
+        <NonScroll name="PharmEasy" counter={noInCart} />
         <View style={{height:600}}>
         <ScrollView>
         <Crousal/>

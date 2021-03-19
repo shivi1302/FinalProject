@@ -1,6 +1,8 @@
 import React,{Component} from "react";
 import { Text, View,StyleSheet ,ScrollView,Image,TouchableOpacity} from "react-native";
 import imagePath from "../../constants/imagePath";
+import navigationStrings from "../../constants/navigationStrings";
+import colors from "../../styles/colors";
 
 export default class DetailPage extends Component{
     render(){
@@ -148,10 +150,39 @@ export default class DetailPage extends Component{
             }}
           >
             Easy 30 days return and exchange.Return Policies may vary based on
-            products and promotions. For full details on your Returns Policies,
-            please
+            products and promotions. For full details on your Returns Policies.
           </Text>
         </ScrollView>
+        <View>
+        <TouchableOpacity
+            style={{
+              backgroundColor: colors.themeColor,
+              width: 200,
+              height: 45,
+              borderRadius: 10,
+             marginHorizontal:70,
+             marginVertical:10
+            }}
+            onPress={() =>
+              {navigation.navigate(navigationStrings.HOMEPAGE, {
+                screen: navigationStrings.HOMEPAGE,
+                params: { addedProduct: item},
+              })}
+            }
+          >
+            <Text
+              style={{
+                textAlign: "center",
+                color: "white",
+                fontWeight: "bold",
+                paddingTop: 10,
+                fontSize: 15,
+              }}
+            >
+              Add to Bag
+            </Text>
+          </TouchableOpacity>
+        </View>
             </View>
         )
     }

@@ -1,12 +1,15 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View,Image,StyleSheet,TouchableOpacity,Text } from "react-native";
+
 import navigationStrings from "../constants/navigationStrings";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
-export default function Card(props) {
+
+ export default function Card(props) {
     const navigation = useNavigation();
     const {data,onAdd}=  props
+  
     return(
         <View
         style={{
@@ -40,7 +43,7 @@ export default function Card(props) {
   }
   const styles = StyleSheet.create({
     mainImage: { height: 200, width: 150, borderRadius: 10 },
-    mainName: { textAlign: "center", fontFamily:fonts.subTitles, color:colors.textColor },
+    mainName: { textAlign: "center", fontFamily:fonts.subTitles, color:colors.textColor,marginTop:10 },
     button: {
       backgroundColor: colors.themeColor,
       margin: 30,
@@ -58,4 +61,3 @@ export default function Card(props) {
       fontSize: 15,
     },
   });
-  

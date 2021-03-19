@@ -10,6 +10,7 @@ export default class OTPverify
                 <Text style={{margin:20}}>
                     OTP Verification
                 </Text>
+                
             </WrapperClass>
         )
     }
