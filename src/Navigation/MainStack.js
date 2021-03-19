@@ -1,8 +1,9 @@
 import React,{ Fragment } from "react";
 import { createStackNavigator } from "react-navigation-stack";
 import navigationStrings from "../constants/navigationStrings";
-import { DetailPage, HomePage } from "../Screens";
+import { Cart, DetailPage, HomePage } from "../Screens";
 import Account from "../Screens/Account/Account";
+// import Cart from "../Screens/Cart/Cart";
 // import DetailPage from "../Screens/DetailPage/DetailPage";
 import Diagnostics from "../Screens/Diagnostics/Diagnostics";
 import HealthCare from "../Screens/Healthcare/HealthCare";
@@ -27,6 +28,15 @@ function MainStack(Stack){
             }}
             name={navigationStrings.DETAILPAGE}
             />
+ <Stack.Screen
+            component={Cart}
+            options={{
+                headerShown: false
+            }}
+            name={navigationStrings.CART}
+            />
+            
+           
             {/* <Stack.Screen
             component={Account}
             options={{

@@ -2,8 +2,9 @@ import React,{Fragment} from "react";
 import {} from "react-native";
 import {createStackNavigator} from "react-navigation-stack"
 import navigationStrings from "../constants/navigationStrings";
+import { OTPverify } from "../Screens";
 import Login from "../Screens/Login/Login";
-import SignUp from "../Screens/SignUp/SignUp";
+
 
 function AuthStack (Stack){
     return(
@@ -16,11 +17,11 @@ function AuthStack (Stack){
              name={navigationStrings.LOGIN}
             />
                <Stack.Screen
-             component={SignUp}
+             component={OTPverify}
              options={{
                  headerShown:false
              }}
-             name={navigationStrings.SIGNUP}
+             name={navigationStrings.OTP}
             />
         </Fragment>
     )

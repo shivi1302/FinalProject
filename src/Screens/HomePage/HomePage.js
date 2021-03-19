@@ -8,6 +8,7 @@ import NonScroll from '../../Component/NonScroll';
 import WrapperClass from '../../Component/WrapperClass';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
+
 export default class HomePage extends Component {
   state={
     HomeArray:[
@@ -76,6 +77,10 @@ export default class HomePage extends Component {
         mrp : 154
       },
     ]
+  }
+
+  addToCart=()=>{
+   
   }
   render() {
     const {HomeArray}= this.state

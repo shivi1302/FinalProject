@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {Text, View,TextInput,StyleSheet,TouchableOpacity} from 'react-native';
-import FlashMessage, { showMessage } from 'react-native-flash-message';
-import Validation from '../../Component/Validation';
+import { showMessage } from 'react-native-flash-message';
+import Validation from '../../uttils/Validation';
 import WrapperClass from '../../Component/WrapperClass';
 import navigationStrings from '../../constants/navigationStrings';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
-
 class Login extends Component {
     state={
         email:"",
@@ -35,7 +34,36 @@ class Login extends Component {
         }
         return true;
       };
-
+      loginLoader = () => {
+        let {email, password} = this.state;
+        if (this.isValidData()) {
+          api.Login({
+              email: email,
+              password: password,
+            })
+            .then((res) => {
+              console.log(JSON.stringify(res));
+              
+              showMessage({
+                type: 'success',
+                icon: 'success',
+                message: 'Done',
+              });
+              setUserData(res.data).then(
+                this.props.navigation.navigate(navigationStrings.HOMEPAGE),
+              );
+            })
+            .catch((error) => {
+              console.log(error);
+              showMessage({
+                type: 'danger',
+                icon: 'danger',
+                message: error,
+              });
+              return false;
+            });
+        }
+      };
   render() {
     return (
       <WrapperClass>

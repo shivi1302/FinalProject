@@ -6,5 +6,7 @@ export default{
     NOTIFICATIONS:"notifications",
     LOGIN:"login",
     SIGNUP:"signup",
-    DETAILPAGE:"detailpage"
+    DETAILPAGE:"detailpage",
+    CART:"cart",
+    OTP:"otpverify"
 }
