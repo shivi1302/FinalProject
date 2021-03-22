@@ -10,6 +10,7 @@ function MainStack(Stack){
             <Stack.Screen
             component={BottomTabNavigator}
             options={{
+                headerShown: false
             }}
             name={navigationStrings.HOMEPAGE}
             />

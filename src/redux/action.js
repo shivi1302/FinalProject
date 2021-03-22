@@ -9,3 +9,10 @@ export const AddToCart=(value)  => {
     }
     )
 }
+
+export const DeleteFromCart =(id)=>{
+    return({
+        type:types.DELETEFROMCART,
+        payload:id
+    })
+}

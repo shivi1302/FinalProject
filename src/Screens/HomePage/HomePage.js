@@ -86,11 +86,9 @@ class HomePage extends Component {
         price: 3299,
         mrp: 154,
       },
-    ],
-    noInCart: 0,
-    cartForm: [],
+    ]
   };
-
+  
 
   render() {
    

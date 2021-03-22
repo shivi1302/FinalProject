@@ -15,6 +15,16 @@ export default function (state = initialState, action) {
         
       };
     }
+    case types.DELETEFROMCART:{
+      return{
+        ...state,
+       cardArray:[
+        ...cardArray.filter(cardArray=>cardArray.id!==action.payload)
+       ], 
+       counter:cardArray.length-1
+      }
+    }
+ 
     default:
       return {
         ...state,
