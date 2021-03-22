@@ -1,23 +1,15 @@
 import React,{ Fragment } from "react";
 import { createStackNavigator } from "react-navigation-stack";
 import navigationStrings from "../constants/navigationStrings";
-import { Cart, DetailPage, HomePage } from "../Screens";
-import Account from "../Screens/Account/Account";
-// import Cart from "../Screens/Cart/Cart";
-// import DetailPage from "../Screens/DetailPage/DetailPage";
-import Diagnostics from "../Screens/Diagnostics/Diagnostics";
-import HealthCare from "../Screens/Healthcare/HealthCare";
-// import HomePage from "../Screens/HomePage/HomePage";
-import Notification from "../Screens/Notifications/Notifications";
+import { Account, Cart, DetailPage, Diagnostics, HealthCare, HomePage, Notification } from "../Screens";
 import BottomTabNavigator from "./TabRoutes";
 
 function MainStack(Stack){
     return(
         <Fragment>
             <Stack.Screen
-            component={HomePage}
+            component={BottomTabNavigator}
             options={{
-                headerShown: false
             }}
             name={navigationStrings.HOMEPAGE}
             />
@@ -37,7 +29,7 @@ function MainStack(Stack){
             />
             
            
-            {/* <Stack.Screen
+            <Stack.Screen
             component={Account}
             options={{
                 headerShown: false
@@ -64,7 +56,7 @@ function MainStack(Stack){
                 headerShown: false
             }}
             name={navigationStrings.DIAGNOSTICS}
-            /> */}
+            />
         </Fragment>
     )
 }

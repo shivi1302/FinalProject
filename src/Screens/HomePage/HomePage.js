@@ -1,115 +1,106 @@
 import React, {Component} from 'react';
-import {View, Text, ScrollView, StyleSheet, Image,FlatList} from 'react-native';
-import { showMessage } from 'react-native-flash-message';
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  Image,
+  FlatList,
+} from 'react-native';
+import {showMessage} from 'react-native-flash-message';
 import Card from '../../Component/Card';
 import Crousal from '../../Component/Crousal';
 import HomeView from '../../Component/HomeView';
 import HorizontalCrousal from '../../Component/HorizontalCrousal';
 import NonScroll from '../../Component/NonScroll';
 import WrapperClass from '../../Component/WrapperClass';
+import store from '../../redux/store';
+import {AddToCart} from '../../redux/action';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
+import {connect} from 'react-redux';
 
-export default class HomePage extends Component {
-  state={
-    HomeArray:[
+class HomePage extends Component {
+  state = {
+    HomeArray: [
       {
         id: 1,
-        name: "TOP-GUMMY",
+        name: 'TOP-GUMMY',
         image:
-          "https://cdn01.pharmeasy.in/dam/products_otc/Z16765/top-gummy-immunity-booster-gummies-vitamin-c-zinc-orange-flavour-bottle-of-30-2-1613732632.jpg",
+          'https://cdn01.pharmeasy.in/dam/products_otc/Z16765/top-gummy-immunity-booster-gummies-vitamin-c-zinc-orange-flavour-bottle-of-30-2-1613732632.jpg',
         price: 3299,
-        mrp : 154
+        mrp: 154,
       },
       {
         id: 2,
-        name: "AWLA JUICE",
+        name: 'AWLA JUICE',
         image:
-          "https://cdn01.pharmeasy.in/dam/products_otc/D92359/everherb-amla-juice-rich-in-vitamin-c-natural-immunity-booster-1l-bottle-2-1600335790.jpg",
+          'https://cdn01.pharmeasy.in/dam/products_otc/D92359/everherb-amla-juice-rich-in-vitamin-c-natural-immunity-booster-1l-bottle-2-1600335790.jpg',
         price: 3299,
-        mrp : 154
+        mrp: 154,
       },
       {
         id: 3,
-        name: "FLUEN-IMMUNITY",
+        name: 'FLUEN-IMMUNITY',
         image:
-          "https://cdn01.pharmeasy.in/dam/products_otc/U16462/smws-fluen-immunity-booster-syrup-bottle-of-300-ml-2-1599596236.jpg",
+          'https://cdn01.pharmeasy.in/dam/products_otc/U16462/smws-fluen-immunity-booster-syrup-bottle-of-300-ml-2-1599596236.jpg',
         price: 3299,
-        mrp : 154
+        mrp: 154,
       },
       {
         id: 4,
-        name: "HORLICS",
+        name: 'HORLICS',
         image:
-          "https://cdn01.pharmeasy.in/dam/discovery/categoryImages/f6269ab4dc593128b40f021e99c2698e",
+          'https://cdn01.pharmeasy.in/dam/discovery/categoryImages/f6269ab4dc593128b40f021e99c2698e',
         price: 3299,
-        mrp : 154
+        mrp: 154,
       },
       {
         id: 5,
-        name: "TOP-GUMMY",
+        name: 'TOP-GUMMY',
         image:
-          "https://cdn01.pharmeasy.in/dam/discovery/categoryImages/b11f3dce3da93b4bb817a04dbaa13a5a",
+          'https://cdn01.pharmeasy.in/dam/discovery/categoryImages/b11f3dce3da93b4bb817a04dbaa13a5a',
         price: 3299,
-        mrp : 154
+        mrp: 154,
       },
       {
         id: 6,
-        name: "DETTOL",
+        name: 'DETTOL',
         image:
-          "https://5.imimg.com/data5/EH/BN/MY-20870485/dettol-antiseptic-liquid-500x500.png",
+          'https://5.imimg.com/data5/EH/BN/MY-20870485/dettol-antiseptic-liquid-500x500.png',
         price: 3299,
-        mrp : 154
+        mrp: 154,
       },
       {
         id: 7,
-        name: "TOP-GUMMY",
+        name: 'TOP-GUMMY',
         image:
-          "https://cdn01.pharmeasy.in/dam/discovery/categoryImages/d560f1954c1a3200aba2ef4df2774d60",
+          'https://cdn01.pharmeasy.in/dam/discovery/categoryImages/d560f1954c1a3200aba2ef4df2774d60',
         price: 3299,
-        mrp : 154
+        mrp: 154,
       },
       {
         id: 8,
-        name: "TOP-GUMMY",
-        image:
-          "https://assets.pharmeasy.in/web-assets/dist/951a8017.png",
+        name: 'TOP-GUMMY',
+        image: 'https://assets.pharmeasy.in/web-assets/dist/951a8017.png',
         price: 3299,
-        mrp : 154
+        mrp: 154,
       },
     ],
-    noInCart:0,
-    cartForm:[]
-  }
-
-  addToCart = (item) => {
-    let {cartForm ,noInCart} = this.state;
-    let newCart =[...cartForm,...[item]]
-  let index = cartForm.findIndex((data)=> data.id == item.id  )
-  if(!(index==-1)){
-    showMessage({
-      type: 'danger',
-      icon: 'danger',
-      message: "Already Added to Cart",
-    });
-    this.setState({
-    })
-  }
-  else{
-    this.setState({
-      cartForm:newCart,
-      noInCart:noInCart+1
-    });
-  }
+    noInCart: 0,
+    cartForm: [],
   };
+
+
   render() {
-    const {HomeArray,noInCart}= this.state
+   
+    const {HomeArray, noInCart} = this.state;
     return (
       <WrapperClass>
-        <NonScroll name="PharmEasy" counter={noInCart} />
-        <View style={{height:600}}>
-        <ScrollView>
-        <Crousal/>
+        <NonScroll name="PharmEasy" counter={this.props.counter} />
+        <View style={{height: 600}}>
+          <ScrollView>
+            <Crousal />
             <Image
               style={styles.bannerImage}
               source={{
@@ -118,31 +109,42 @@ export default class HomePage extends Component {
               }}
             />
             <View style={styles.line} />
-           <HorizontalCrousal/>
-           <View style={styles.line} />
-              <HomeView/>
-              <FlatList
-            data={HomeArray}
-            showsVerticalScrollIndicator={false}
-            numColumns={2}
-            keyExtractor={(item) => item.id}
-            ItemSeparatorComponent={() => (
-              <View style={{ marginBottom: 10 }}></View>
-            )}
-            renderItem={({ item }) => (
-              <Card data={item} onAdd={this.addToCart}></Card>
-            )}
-          />
-              <Text style={{height:100}}></Text>
-        </ScrollView>
+            <HorizontalCrousal />
+            <View style={styles.line} />
+            <HomeView />
+            <FlatList
+              data={HomeArray}
+              showsVerticalScrollIndicator={false}
+              numColumns={2}
+              keyExtractor={item => item.id}
+              ItemSeparatorComponent={() => (
+                <View style={{marginBottom: 10}}></View>
+              )}
+              renderItem={({item}) => (
+                <Card data={item} onAdd={this.props.AddToCart}></Card>
+              )}
+            />
+            <Text style={{height: 100}}></Text>
+          </ScrollView>
         </View>
       </WrapperClass>
     );
   }
 }
+const mapDispatchToProps=dispatch=>{
+  return{
+    AddToCart : value => dispatch(AddToCart(value))
+  }
+
+  
+}
+const mapStateToProps = state=>{
+  return{
+    counter:state.counter
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(HomePage);
 const styles = StyleSheet.create({
- 
- 
   bannerImage: {
     borderRadius: 10,
     height: 200,
@@ -155,5 +157,4 @@ const styles = StyleSheet.create({
     height: 10,
     marginVertical: 10,
   },
- 
 });

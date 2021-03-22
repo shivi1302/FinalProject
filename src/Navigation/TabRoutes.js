@@ -24,8 +24,8 @@ export default function BottomTabNavigator(){
             options={{
                 tabBarLabel:"Home",
                 tabBarIcon:()=>(
-                    <Image source={imagePath.home} >
-
+                    <Image style={{height:20,width:20}} source={imagePath.home} >
+                            
                     </Image>
                 )
             }}
@@ -35,6 +35,11 @@ export default function BottomTabNavigator(){
             component={HealthCare}
             options={{
                 tabBarLabel:"Healthcare",
+                tabBarIcon:()=>(
+                    <Image style={{height:20,width:20}} source={imagePath.healthcare} >
+                            
+                    </Image>
+                )
             }}
             />
              <Tab.Screen
@@ -42,6 +47,11 @@ export default function BottomTabNavigator(){
             component={Diagnostics}
             options={{
                 tabBarLabel:"Diagnostics",
+                tabBarIcon:()=>(
+                    <Image style={{height:20,width:20}} source={imagePath.diagnostics} >
+                            
+                    </Image>
+                )
             }}
             />
              <Tab.Screen
@@ -49,13 +59,23 @@ export default function BottomTabNavigator(){
             component={Notification}
             options={{
                 tabBarLabel:"Notification",
-            }}
+                tabBarIcon:()=>(
+                    <Image style={{height:20,width:20}} source={imagePath.notification} >
+                            
+                    </Image>
+                )}
+            }
             />
              <Tab.Screen
             name={navigationStrings.ACCOUNT}
             component={Account}
             options={{
                 tabBarLabel:"Account",
+                tabBarIcon:()=>(
+                    <Image style={{height:20,width:20}} source={imagePath.account} >
+                            
+                    </Image>
+                )
             }}
             />
         </Tab.Navigator>

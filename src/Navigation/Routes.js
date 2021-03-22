@@ -9,6 +9,8 @@ export default function(){
     return(
         <NavigationContainer>
             <Stack.Navigator>
+              
+              
                 {AuthStack(Stack)}
                 {MainStack(Stack)}
             </Stack.Navigator>
