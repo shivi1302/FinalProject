@@ -6,6 +6,7 @@ import WrapperClass from '../../Component/WrapperClass';
 import navigationStrings from '../../constants/navigationStrings';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
+import api from "../../apis"
 class Login extends Component {
     state={
         email:"",
@@ -54,7 +55,7 @@ class Login extends Component {
               );
             })
             .catch((error) => {
-              console.log(error);
+              console.log(error+"HGFDHGSHFH");
               showMessage({
                 type: 'danger',
                 icon: 'danger',
@@ -63,7 +64,23 @@ class Login extends Component {
               return false;
             });
         }
-      };
+      }; 
+      
+      signupLoader = () => {
+        
+        api.SignUp({
+            email: "shivink1331@gmail.com",
+            password: "1234567",
+            name:"Shivi"
+          })
+          .then((res) => {
+            console.log(JSON.stringify(res));
+          })
+          .catch((error) => {
+            console.log(error+"HGFDHGSHFH");
+          });
+      
+    };
   render() {
     return (
       <WrapperClass>
@@ -82,12 +99,18 @@ class Login extends Component {
               >
               <Text style={styles.buttonText}>Start</Text>
           </TouchableOpacity> */}
-<TouchableOpacity style={styles.button}  onPress={() =>{this.isValidData ()? (this.props.navigation.navigate(navigationStrings.HOMEPAGE)):null   }
+<TouchableOpacity style={styles.button}  onPress={() =>{this.isValidData()? (this.props.navigation.navigate(navigationStrings.HOMEPAGE)):null   }
               }>
     <Text style={styles.buttonText}>Start</Text>
 </TouchableOpacity>
-        
-        
+        <Text style={{textAlign:"center",marginTop:20}}>Don't have an account ?  
+                
+        </Text>
+        <TouchableOpacity onPress={()=>{this.signupLoader}}>
+            <Text style={{color:colors.themeColor,textAlign:"center"}}>
+               SignUp
+            </Text>
+            </TouchableOpacity> 
       </WrapperClass>
     );
   }
@@ -118,7 +141,7 @@ const styles = StyleSheet.create({
         color:"black"
       },
       button:{
-        backgroundColor:colors.buttonColor,
+        backgroundColor:colors.themeColor,
         padding:10,
         borderRadius:10,
         marginHorizontal:40,

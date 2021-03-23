@@ -1,5 +1,6 @@
 import React,{Component} from "react";
 import { Text, View,StyleSheet ,ScrollView,Image,TouchableOpacity} from "react-native";
+import NonScroll from "../../Component/NonScroll";
 import imagePath from "../../constants/imagePath";
 import navigationStrings from "../../constants/navigationStrings";
 import colors from "../../styles/colors";
@@ -10,14 +11,9 @@ export default class DetailPage extends Component{
         const { navigation } = this.props;
         return(
             <View style={{flex:1}}>
-
+<NonScroll name="Details Page"/>
 <View style={{ flexDirection: "row", marginHorizontal: 10}}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image
-              style={{ height: 30, width: 30,marginTop:5}}
-              source={imagePath.backArrow}
-            ></Image>
-          </TouchableOpacity>
+          
         </View>
                 <ScrollView>
           <Image

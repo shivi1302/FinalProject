@@ -9,7 +9,7 @@ export default class App extends Component{
     return(
       <Provider store={store}>
       <Routes/>
-      <FlashMessage position="top"/>
+      <FlashMessage position="bottom"/>
       </Provider>
     )
   }

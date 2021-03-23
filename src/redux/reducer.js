@@ -2,7 +2,8 @@ import types from './types';
 
 const initialState = {
   cardArray: [],
-  counter:0
+  counter:0,
+  total:0
 };
 export default function (state = initialState, action) {
   const {cardArray}=state
@@ -11,8 +12,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         cardArray: [...cardArray, action.payload],
-        counter:cardArray.length+1
-        
+        counter:cardArray.length+1,
       };
     }
     case types.DELETEFROMCART:{
@@ -31,3 +31,4 @@ export default function (state = initialState, action) {
       };
   }
 }
+
