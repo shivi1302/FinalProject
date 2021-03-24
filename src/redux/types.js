@@ -1,5 +1,6 @@
 export default{
     ADDTOCART:"ADDTOCART",
     DELETEFROMCART:"DELETEFROMCART",
-    
+    EDIT:"EDIT",
+    LOGIN:"LOGIN"
 }

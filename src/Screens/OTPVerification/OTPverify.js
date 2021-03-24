@@ -15,12 +15,35 @@ import fonts from '../../styles/fonts';
 import imagePath from '../../constants/imagePath';
 import navigationStrings from '../../constants/navigationStrings';
 import WrapperClass from '../../Component/WrapperClass';
-const CELL_COUNT = 4;
-export default function OtpVerification({navigation}) {
+import { _OtpVerification } from '../../redux/actions/auth';
+import Loader from '../../Component/Loader';
+const CELL_COUNT = 5;
+export default function OtpVerification({navigation, route}) {
   const [state, setState] = useState({
     timer: 100,
     otp: '',
+    isLoading:false
   });
+
+const LoginUsingOTP=()=>{
+  let{isLoading} =state
+  _OtpVerification({
+    "userId": route.params.data,
+    "otp" : "12345",
+    "deviceToken":"123",
+    "registerFrom" : "ANDROID"
+  }).then((res)=>{
+    isLoading=true
+    console.log(res)
+    navigation.navigate(navigationStrings.HOMEPAGE
+      )
+  }).catch((error)=>{
+    console.warn(error)
+    isLoading=false
+  })
+  updateState({isLoading:true});
+ 
+}
 
   const updateState = data => setState(state => ({...state, ...data}));
   //TO SHOW THE TIMER SO THAT USER HAS TO WAIT FOR A WHILE BEFORE REQUSTING A NEW OTP AND HE DON'T KEEP ON REQUESTING OTP AGAIN AND AGAIN
@@ -52,31 +75,27 @@ export default function OtpVerification({navigation}) {
     setValue: onChangeOtp,
   });
 
-  const onVerifyOtp = () => {
-    const {otp} = state;
-    alert(otp);
-    navigation.navigate(navigationStrings.HOME);
+  
 
-  };
-
-  const {timer} = state;
+  const {timer,isLoading} = state;
   return (
-    <WrapperClass>
+    <View style={{flex:1}}>
       <View style={styles.backContainer}>
         <TouchableOpacity
-          onPress={() => navigation.goBack(null)}
-          style={{alignSelf: 'flex-start'}}>
+          onPress={() => navigation.goBack(null)}>
           <Image style={{height:40,width:40}} source={imagePath.backArrow} />
         </TouchableOpacity>
       </View>
-      <View
-        style={{
-          flex: 1,
-          marginHorizontal: 14,
-        }}>
-        <Text style={styles.header}>OTP VERIFICATION</Text>
+      <Text style={styles.header}>OTP VERIFICATION</Text>
         <Text style={styles.txtSmall}>Enter the OTP sent to your registered email and phone number</Text>
-        <View style={{height:50}} />
+
+
+
+
+      
+     
+        
+        
         <CodeField
           ref={ref}
           {...propsOtp}
@@ -97,12 +116,10 @@ export default function OtpVerification({navigation}) {
             </Text>
           )}
         />
-        <TouchableOpacity
-          onPress={onVerifyOtp}
-          Style={{marginTop: 10}}
-          
-        ><Text>
-            Verify Account</Text></TouchableOpacity>
+
+<TouchableOpacity style={styles.button}  onPress={LoginUsingOTP}>
+    <Text style={styles.buttonText}>Verify OTP</Text>
+</TouchableOpacity>
         {timer > 0 ? (
           <View style={styles.bottomContainer}>
             <Text style={{...styles.txtSmall, color: colors.buttonColor}}>
@@ -132,8 +149,8 @@ export default function OtpVerification({navigation}) {
             </Text>
           </View>
         )}
-      </View>
-    </WrapperClass>
+        <Loader isLoading={isLoading}/>
+    </View>
   );
 }
 
@@ -147,6 +164,8 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontFamily: fonts.mainfont,
         textAlign: 'center',
+        color:colors.themeColor,
+        marginBottom:10
       },
       txtSmall: {
         
@@ -156,10 +175,16 @@ const styles = StyleSheet.create({
     
       root: {
         marginHorizontal: 16,
-        marginVertical: 30,
+        marginVertical: 20,
         justifyContent: 'space-between',
       },
-     
+      button:{
+        backgroundColor:colors.themeColor,
+        padding:10,
+        borderRadius:10,
+        marginHorizontal:40,
+        marginVertical:10
+      },
       title: {textAlign: 'center', fontSize: 30},
       codeFieldRoot: {marginTop: 20},
       cell: {
@@ -178,4 +203,10 @@ const styles = StyleSheet.create({
       focusCell: {
         borderColor: colors.themeColor,
       },
+      buttonText:{
+        fontFamily: fonts.subTitles,
+        textAlign:'center',
+        fontSize:17,
+        color:"white"
+      }
 })

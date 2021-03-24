@@ -7,4 +7,5 @@ export {default as Diagnostics} from "./Diagnostics/Diagnostics";
 export {default as HealthCare} from "./Healthcare/HealthCare";
 export {default as Notification} from "./Notifications/Notifications";
 export {default as Account} from "./Account/Account"
-export {default as SignUp} from "./SignUp/SignUp"
+export {default as SignUp} from "./SignUp/SignUp";
+export {default as Mobile} from "./Mobile/Mobile"

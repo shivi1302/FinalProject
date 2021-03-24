@@ -8,5 +8,6 @@ export default{
     SIGNUP:"signup",
     DETAILPAGE:"detailpage",
     CART:"cart",
-    OTP:"otpverify"
+    OTP:"otpverify",
+    MOBILE:"mobile"
 }

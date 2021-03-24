@@ -13,7 +13,13 @@ export default function CartCard(props) {
             <Text style={styles.textCart}>Rs. {data.price}</Text>
             <Text style={styles.textCart1}>Rs. {data.mrp}</Text>
             </View>
-           
+           <View style={{flexDirection:"row",marginLeft:"auto"}}>
+           <TouchableOpacity onPress={() => {
+              onDelete(data.id);
+            }} style={{borderWidth:1,padding:7,margin:2,height:25,paddingTop:-3,paddingHorizontal:8}}><Text>-</Text></TouchableOpacity>
+           <Text style={{margin:2}}>1</Text>
+           <TouchableOpacity style={{borderWidth:1,padding:7,margin:2,height:25,paddingTop:-3}}><Text>+</Text></TouchableOpacity>
+           </View>
         </View>
         <TouchableOpacity onPress={() => {
               onDelete(data.id);

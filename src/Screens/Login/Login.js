@@ -7,6 +7,7 @@ import navigationStrings from '../../constants/navigationStrings';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 import api from "../../apis"
+
 class Login extends Component {
     state={
         email:"",
@@ -35,6 +36,8 @@ class Login extends Component {
         }
         return true;
       };
+
+      
       loginLoader = () => {
         let {email, password} = this.state;
         if (this.isValidData()) {
@@ -81,6 +84,10 @@ class Login extends Component {
           });
       
     };
+   
+
+
+
   render() {
     return (
       <WrapperClass>
@@ -99,8 +106,7 @@ class Login extends Component {
               >
               <Text style={styles.buttonText}>Start</Text>
           </TouchableOpacity> */}
-<TouchableOpacity style={styles.button}  onPress={() =>{this.isValidData()? (this.props.navigation.navigate(navigationStrings.HOMEPAGE)):null   }
-              }>
+<TouchableOpacity style={styles.button}  onPress={()=>{(this.isValidData)?(this.props.navigation.navigate(navigationStrings.MOBILE)):null}}>
     <Text style={styles.buttonText}>Start</Text>
 </TouchableOpacity>
         <Text style={{textAlign:"center",marginTop:20}}>Don't have an account ?  

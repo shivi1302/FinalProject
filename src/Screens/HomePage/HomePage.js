@@ -15,7 +15,7 @@ import HorizontalCrousal from '../../Component/HorizontalCrousal';
 import NonScroll from '../../Component/NonScroll';
 import WrapperClass from '../../Component/WrapperClass';
 import store from '../../redux/store';
-import {AddToCart} from '../../redux/action';
+import {AddToCart} from '../../redux/actions/action';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 import {connect} from 'react-redux';
